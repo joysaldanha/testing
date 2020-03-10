@@ -1,0 +1,23 @@
+
+def threeSumClosest(A,B):
+    if len(A)>3:
+        A.sort()
+        s=A[0]+A[1]+A[2]
+        mindiff=abs(B-s)
+        for x in range(len(A)-2):
+            y=x+1
+            z=len(A)-1
+            while y<z:
+                temp=A[x]+A[y]+A[z]
+                diff=abs(B-temp)
+                if diff==0:
+                    return B
+                if diff<mindiff:
+                    mindiff=diff
+                    s=temp
+                if temp<B:
+                    y+=1
+                else:
+                    z-=1
+        return s
+    return sum(A)
